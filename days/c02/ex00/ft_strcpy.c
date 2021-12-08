@@ -1,0 +1,12 @@
+char  *ft_strcpy(char *dest, char *src)
+{
+  int count = 0;
+
+  while(src[count] != '\0')
+  {
+    dest[count] = src[count];
+    count++;
+  }
+  dest[count] = src[count];
+  return(dest);
+}
