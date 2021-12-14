@@ -1,12 +1,22 @@
-char  *ft_strcpy(char *dest, char *src)
-{
-  int count = 0;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/03 04:58:09 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/03 05:01:42 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-  while(src[count] != '\0')
-  {
-    dest[count] = src[count];
-    count++;
-  }
-  dest[count] = src[count];
-  return(dest);
+char	*ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }

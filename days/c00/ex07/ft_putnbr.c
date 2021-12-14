@@ -1,28 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/02 13:02:20 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/02 16:38:06 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_putchar(char x)
+void	ft_putchar(char c)
 {
-	write(1, &x, 1);
+	write(1, &c, 1);
 }
 
 void	ft_putnbr(int nb)
 {
-	if(nb < 0)
+	unsigned int n;
+
+	if (nb < 0)
 	{
 		ft_putchar('-');
-		nb = nb * -1;
-	}
-	if(nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		n = -nb;
 	}
 	else
-		ft_putchar(nb + '0');
-}
-
-int	main()
-{
-	ft_putnbr(-45);
-	return(0);
+		n = nb;
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		n %= 10;
+	}
+	ft_putchar(n + '0');
 }

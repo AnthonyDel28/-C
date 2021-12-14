@@ -1,49 +1,50 @@
-#include <unistd.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/03 19:42:24 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/05 04:12:21 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putchar(char c)
+int		ft_isdigit(char c)
 {
-	write(1, &c, 1);
+	return (c >= '0' && c <= '9');
 }
 
-void	ft_putstr(char *str)
+int		ft_islower(char c)
 {
-	int i;
-
-	i = 0;
-	while(str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	return (c >= 'a' && c <= 'z');
 }
 
-char	uppercase(char lettre)
-{	
-	if(lettre >= 'a' && lettre <= 'z')
-		lettre = lettre - 32;
-	return(lettre);
+int		ft_isupper(char c)
+{
+	return (c >= 'A' && c <= 'Z');
 }
 
 char	*ft_strcapitalize(char *str)
 {
-	int index;
+	char	*s;
 
-	index = 0;
-	while(str[index] != '\0')
+	s = str;
+	while (*s)
 	{
-		if(str[0] >= 'a' && str[0] <= 'z')
-			str[0] = str[0] - 32;
-		if(str[index-1] == ' ' || str[index-1] == '\t' || str[index-1] == '+' || str[index-1] == '-')
-			str[index] = uppercase(str[index]);
-		index++;
+		if (ft_isdigit(*s) || ft_islower(*s) || ft_isupper(*s))
+		{
+			if (ft_isdigit(*s))
+				while (ft_isdigit(s[1]))
+					s++;
+			else if (ft_islower(*s))
+				*s -= 32;
+			while (ft_islower(*(++s)) || ft_isupper(*s))
+				if (ft_isupper(*s))
+					*s += 32;
+		}
+		else
+			s++;
 	}
-	return(str);
-}
-
-int	main()
-{
-	char	str[] = "   salut, comment tu vas ? 42 mots quarante-deux; cinquante + et +un\n";
-	ft_putstr(ft_strcapitalize(str));
-	return(0);
+	return (str);
 }

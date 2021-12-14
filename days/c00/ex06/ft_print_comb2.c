@@ -1,38 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/02 12:29:57 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/02 17:43:21 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void	space(void);
-
-void	ft_putchar(char x)
+void	ft_putchar(char c)
 {
-	write(1, &x, 1);
+	write(1, &c, 1);
 }
 
 void	ft_print_comb2(void)
 {
-	int a;
-	int b;
+	char a;
+	char b;
 
 	a = 0;
-	while(a <= 98)
+	b = 1;
+	while (a < 99)
 	{
-		b = a + 1;
-		while(b <= 99)
-		{
-			ft_putchar((a / 10) + '0');
-			ft_putchar((a % 10) + '0');
-			ft_putchar(' ');
-			ft_putchar((b / 10) + '0');
-			ft_putchar((b % 10) + '0');
-			if(a != 98)
-				space();
-			b++;
-		}
-		a++;
+		ft_putchar(a / 10 + '0');
+		ft_putchar(a % 10 + '0');
+		ft_putchar(' ');
+		ft_putchar(b / 10 + '0');
+		ft_putchar(b % 10 + '0');
+		if (a < 98)
+			write(1, ", ", 2);
+		if (++b > 99)
+			b = ++a + 1;
 	}
-}
-
-void	space(void)
-{
-	ft_putchar(',');
-	ft_putchar(' ');
 }

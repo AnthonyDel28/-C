@@ -1,16 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/16 22:19:44 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/16 22:19:46 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int i = 0;
+	unsigned int i;
 
-	while(i < n && src[i] != '\0')
-	{
+	i = -1;
+	while (++i < n && src[i])
 		dest[i] = src[i];
-		i++;
-	}
-	if(i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return(dest);
+	while (i < n)
+		dest[i++] = '\0';
+	return (dest);
 }

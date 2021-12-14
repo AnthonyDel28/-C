@@ -1,65 +1,31 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/03 03:13:10 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/03 03:26:16 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putchar(char c)
+void	ft_swap(int *a, int *b)
 {
-	write(1, &c, 1);
-}
+	int c;
 
-void	ft_putnbr(int nb)
-{
-	if(nb < 0)
-	{
-		ft_putchar('-');
-		nb = nb * -1;
-	}
-	if(nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + '0');
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
 void	ft_rev_int_tab(int *tab, int size)
 {
-	int a;
-	int b;
-	int tmp;
+	int left;
 
-	a = 0;
-	b = size - 1;
-	while(a < b)
-	{
-		tmp = tab[a];
-		tab[a] = tab[b];
-		tab[b] = tmp;
-		a++;
-		b--;
-	}
-
-}
-
-int main()
-{
-	int size = 5;
-	int tab[sizeof(size)];
-
-	tab[0] = 3;
-	tab[1] = 6;
-	tab[2] = 9;
-	tab[3] = 12;
-	tab[4] = 15;
-
-	int a;
-	a = 0;
-	ft_rev_int_tab(tab, size);
-	while(a < size)
-	{
-		ft_putnbr(tab[a]);
-		if(a != size - 1)
-			ft_putchar(',');
-		a++;
-	}
-	write(1, "\n", 1);
+	if (size < 2)
+		return ;
+	left = 0;
+	while (left < --size)
+		ft_swap(&tab[left++], &tab[size]);
 }

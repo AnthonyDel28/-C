@@ -1,13 +1,22 @@
-int ft_str_is_printable(char *str)
-{
-	int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoursou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/03 18:31:22 by asoursou          #+#    #+#             */
+/*   Updated: 2019/07/03 18:42:20 by asoursou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	i = 0;
-	while(str[i] != '\0')
+int	ft_str_is_printable(char *str)
+{
+	while (*str)
 	{
-		if(str[i] < 20|| str[i] > 127)
-			return(0);
-		i++;
+		if (*str < ' ' || *str == 127)
+			return (0);
+		str++;
 	}
-	return(1);
+	return (1);
 }
